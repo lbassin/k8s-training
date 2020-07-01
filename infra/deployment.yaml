@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: k8s_nginx_image
+          image: lbassin/k8s-training:k8s_nginx_image_version
           ports:
             - containerPort: 80
