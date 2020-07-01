@@ -41,9 +41,5 @@ jobs:
         - echo $KUBE_CONFIG | base64 -d  > $HOME/.kube/config
       script:
         - echo "$K8S_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
-        - kubectl --kubeconfig=/dev/null \
-                  --server=$K8S_SERVER \
-                  --certificate-authority=cert.crt \
-                  --token=$K8S_TOKEN \
-                  get pods
+        - kubectl --kubeconfig=/dev/null --server=$K8S_SERVER --certificate-authority=cert.crt --token=$K8S_TOKEN get pods
         - sh -c "return 0;"
