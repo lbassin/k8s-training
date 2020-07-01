@@ -44,4 +44,4 @@ jobs:
         - echo "$K8S_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
       script:
         - sed -i "s/k8s_nginx_image/${BUILD_NAME}/g" infra/deployment.yaml
-        - kubectl --kubeconfig=/dev/null --server=$K8S_SERVER --certificate-authority=cert.crt --token=$K8S_TOKEN apply -f
+        - kubectl --kubeconfig=/dev/null --server=$K8S_SERVER --certificate-authority=cert.crt --token=$K8S_TOKEN apply -f infra
