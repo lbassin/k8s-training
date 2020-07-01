@@ -19,8 +19,8 @@ jobs:
         - BUILD_NAME=$DOCKER_USERNAME/$DOCKER_PROJECT:$DOCKER_TAG
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker build -t BUILD_NAME .
-        - docker push BUILD_NAME
+        - docker build -t $BUILD_NAME .
+        - docker push $BUILD_NAME
 
     - name: Unit tests
       stage: test
