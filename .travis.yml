@@ -33,5 +33,12 @@ jobs:
 
     - name: Deploy to k8s
       stage: deploy
+      install:
+        - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        - chmod +x ./kubectl
+        - sudo mv ./kubectl /usr/local/bin/kubectl
+        - mkdir $HOME/.kube
+        - echo $KUBE_CONFIG | base64 -d  > $HOME/.kube/config
       script:
+        - kubectl get pods
         - sh -c "return 0;"
