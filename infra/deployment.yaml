@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-training
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: training
+  template:
+    metadata:
+      labels:
+        app: training
+    spec:
+      containers:
+        - name: nginx
+          image: k8s_nginx_image
+          ports:
+            - containerPort: 80
