@@ -39,7 +39,8 @@ jobs:
         - sudo mv ./kubectl /usr/local/bin/kubectl
         - mkdir $HOME/.kube
         - echo $KUBE_CONFIG | base64 -d  > $HOME/.kube/config
+        - alias kubectl='kubectl --kubeconfig=/dev/null --server=$K8S_SERVER --certificate-authority=cert.crt --token=$K8S_TOKEN'
       script:
         - echo "$K8S_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
-        - kubectl --kubeconfig=/dev/null --server=$K8S_SERVER --certificate-authority=cert.crt --token=$K8S_TOKEN get pods
+        - kubectl get pods
         - sh -c "return 0;"
